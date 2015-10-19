@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   version = "1.3">
+   <BuildAction>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForRunning = "YES"
+            buildForTesting = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "31B9B1AD1BD5029200E36FCD"
+               BuildableName = "JournalTests.xctest"
+               BlueprintName = "JournalTests"
+               ReferencedContainer = "container:Journal.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug">
+      <Testables>
+         <TestableReference>
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "31B9B1AD1BD5029200E36FCD"
+               BuildableName = "JournalTests.xctest"
+               BlueprintName = "JournalTests"
+               ReferencedContainer = "container:Journal.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      useCustomWorkingDirectory = "NO">
+   </LaunchAction>
+</Scheme>
