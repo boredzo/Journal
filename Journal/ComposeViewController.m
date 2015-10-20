@@ -36,10 +36,10 @@
 	}
 
 	NSUserDefaults *const __nonnull defaults = [NSUserDefaults standardUserDefaults];
-	__weak NSTextField *const characterCountField = self.characterCountField;
+	__weak typeof(self) weakSelf = self;
 	void (^const prefsChanged)(NSNotification *__nullable) = ^(NSNotification *__nullable note) {
-		NSInteger characterLimitFromPrefs = [defaults integerForKey:JournalPrefCharacterLimit];
-		characterCountField.integerValue = characterLimitFromPrefs;
+		__strong typeof(weakSelf) strongSelf = weakSelf;
+		[strongSelf updateForNewEntryText:strongSelf.entry.text];
 	};
 	[[NSNotificationCenter defaultCenter]
 			addObserverForName:NSUserDefaultsDidChangeNotification object:defaults
@@ -53,7 +53,9 @@
 - (void) textDidChange:(NSNotification *__nonnull)notification {
 	NSTextView *const __nullable textView = notification.object;
 	NSString *const __nonnull text = textView.string ?: @"";
-
+	[self updateForNewEntryText:text];
+}
+- (void) updateForNewEntryText:(NSString *const __nonnull)text {
 	self.entry.text = text;
 
 	NSTextField *const characterCountField = self.characterCountField;
