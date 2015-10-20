@@ -13,7 +13,7 @@
 #import "JournalEntry+CoreDataProperties.h"
 #import "PreferenceKeys.h"
 
-@interface ComposeViewController () <NSTextDelegate>
+@interface ComposeViewController () <NSTextDelegate, NSTextViewDelegate>
 
 @property (weak) IBOutlet NSTextField *characterCountField;
 
@@ -62,6 +62,15 @@
 	const NSInteger charactersRemaining = [self.entry charactersRemainingUnderLimit:limit];
 	characterCountField.objectValue = @(charactersRemaining);
 	characterCountField.textColor = overLimit ? [NSColor redColor] : [NSColor blackColor];
+}
+
+- (BOOL) textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
+	if (commandSelector == @selector(insertLineBreak:)) {
+		//Ctrl-enter
+		[self finishAndRecordEntry:textView];
+		return YES;
+	}
+	return NO;
 }
 
 - (IBAction)finishAndRecordEntry:(id)sender {
