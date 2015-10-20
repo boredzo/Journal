@@ -676,15 +676,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R8W-T5-pRq">
-                                <rect key="frame" x="279" y="380" width="21" height="21"/>
+                            <button verticalHuggingPriority="750" tag="700" translatesAutoresizingMaskIntoConstraints="NO" id="R8W-T5-pRq">
+                                <rect key="frame" x="279" y="381" width="21" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="21" id="huw-Lt-FeN"/>
                                     <constraint firstAttribute="width" secondItem="R8W-T5-pRq" secondAttribute="height" multiplier="21:19" id="i35-sC-EXy"/>
                                 </constraints>
-                                <buttonCell key="cell" type="smallSquare" title="✎️" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fvg-WC-mdE">
+                                <buttonCell key="cell" type="smallSquare" title="New post" bezelStyle="smallSquare" image="JournalEntryComposeIconTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="Fvg-WC-mdE">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="summonNewEntryUI:" target="XfG-lQ-9wD" id="71B-n7-PUW"/>
@@ -843,6 +843,7 @@
                     </view>
                     <connections>
                         <outlet property="arrayController" destination="Qjk-pv-nHj" id="384-zh-SOO"/>
+                        <outlet property="buttonForCreationOfPosts" destination="R8W-T5-pRq" id="3kR-2F-OiE"/>
                         <outlet property="tableCellView" destination="nQA-uC-zoY" id="ziC-dn-JNb"/>
                     </connections>
                 </viewController>
@@ -1090,4 +1091,7 @@
             <point key="canvasLocation" x="-374" y="804"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="JournalEntryComposeIconTemplate" width="16" height="16"/>
+    </resources>
 </document>

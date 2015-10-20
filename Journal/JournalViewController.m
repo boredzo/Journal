@@ -18,6 +18,7 @@ JournalViewController *journalVC_global = nil;
 
 @property (strong) IBOutlet NSArrayController *arrayController;
 @property (strong) IBOutlet NSTableCellView *tableCellView;
+@property (weak) IBOutlet NSButton *buttonForCreationOfPosts;
 
 @end
 
@@ -46,6 +47,9 @@ JournalViewController *journalVC_global = nil;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+
+	//HAX: Nib compiler or unarchiver doesn't seem to preserve this correctly; it gets reset to NSImageOverlaps at run time.
+	self.buttonForCreationOfPosts.imagePosition = NSImageOnly;
 
 	NSFileManager *const manager = [NSFileManager defaultManager];
 	NSError *error = nil;

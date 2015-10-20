@@ -1,0 +1,50 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 16 16
+%%EndComments
+
+%0.5 0.5 scale
+%8 8 translate
+
+%Pencil
+4 4 moveto
+6 5 lineto
+5 6 lineto
+closepath
+fill
+
+6 7 moveto
+11 12 lineto
+12 11 lineto
+7 6 lineto
+closepath
+12 13 moveto
+14 14 2 3 div 45 90 add 360 add 270 45 add arcn
+13 12 lineto
+closepath
+false upath
+fill
+
+%Pencil-outline clip mask
+8 3 moveto
+18 15 lineto
+18 -1 lineto
+-1 -1 lineto
+-1 18 lineto
+15 18 lineto
+3 8 lineto
+closepath
+%0.1 setlinewidth stroke
+clip
+newpath
+
+%Border
+8 1 moveto
+14 2 1 270 360 arc
+14 14 1 0 90 arc
+2 14 1 90 180 arc
+2 2 1 180 270 arc
+closepath
+
+2 setlinewidth
+%0.5 setgray
+stroke
