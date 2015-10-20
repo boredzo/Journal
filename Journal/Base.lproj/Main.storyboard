@@ -660,6 +660,9 @@
                         <rect key="contentRect" x="196" y="240" width="300" height="400"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="windowFrameAutosaveName" value="Journal"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
@@ -931,6 +934,9 @@
                         <rect key="contentRect" x="294" y="313" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                     </window>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="windowFrameAutosaveName" value="Compose"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="7tj-li-7GF" kind="relationship" relationship="window.shadowedContentViewController" id="zSk-AE-P1C"/>
                     </connections>
@@ -1029,6 +1035,9 @@
                         <rect key="contentRect" x="294" y="313" width="186" height="60"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                     </window>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="windowFrameAutosaveName" value="Preferences"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="tsh-fV-m4r" kind="relationship" relationship="window.shadowedContentViewController" id="dbB-qI-Qis"/>
                     </connections>
