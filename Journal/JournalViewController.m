@@ -93,13 +93,18 @@ JournalViewController *journalVC_global = nil;
 
 - (CGFloat) tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
 	JournalEntry *__nonnull entry = self.arrayController.arrangedObjects[(NSUInteger)row];
-	JournalTableCellView *const cellView = (JournalTableCellView *const)self.tableCellView;
-	cellView.bylineField.stringValue = entry.byline;
-	cellView.dateField.objectValue = entry.date;
-	NSTextField *entryTextField = cellView.entryTextField;
-	entryTextField.stringValue = entry.text;
-	[entryTextField sizeToFit];
-	return cellView.fittingSize.height;
+	CGFloat cachedHeight = entry.cachedRowHeight;
+	if (cachedHeight < 1.0) {
+		JournalTableCellView *const cellView = (JournalTableCellView *const)self.tableCellView;
+		cellView.bylineField.stringValue = entry.byline;
+		cellView.dateField.objectValue = entry.date;
+		NSTextField *entryTextField = cellView.entryTextField;
+		entryTextField.stringValue = entry.text;
+		[entryTextField sizeToFit];
+		cachedHeight = cellView.fittingSize.height;
+		entry.cachedRowHeight = cachedHeight;
+	}
+	return cachedHeight;
 }
 
 - (void)setRepresentedObject:(id)representedObject {

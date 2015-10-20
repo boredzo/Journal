@@ -12,6 +12,8 @@
 
 @implementation JournalEntry
 
+@synthesize cachedRowHeight = _cachedRowHeight;
+
 - (void) awakeFromInsert {
 	[super awakeFromInsert];
 	[self setPrimitiveValue:@"" forKey:@"byline"];

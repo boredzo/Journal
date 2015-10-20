@@ -11,6 +11,8 @@
 
 @interface JournalEntry : NSManagedObject
 
+@property(nonatomic) CGFloat cachedRowHeight;
+
 - (bool) exceedsCharacterLimit:(NSUInteger)limit;
 - (NSInteger) charactersRemainingUnderLimit:(NSUInteger)limit;
 
