@@ -10,6 +10,11 @@
 		1B2A606E704BD906DDAEA127 /* JournalTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A6282D637BC76CA55E9BD /* JournalTableCellView.m */; };
 		1B2A69F7A4EFAD081695EEA6 /* JournalTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A6282D637BC76CA55E9BD /* JournalTableCellView.m */; };
 		3125F83B1BD5957D00E63878 /* TestJournalEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3125F83A1BD5957D00E63878 /* TestJournalEntry.m */; settings = {ASSET_TAGS = (); }; };
+		3125F83E1BD6B7CA00E63878 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3125F83D1BD6B7CA00E63878 /* PreferencesViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3125F83F1BD6B7CA00E63878 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3125F83D1BD6B7CA00E63878 /* PreferencesViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3125F8421BD6B89F00E63878 /* PreferenceKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 3125F8411BD6B89F00E63878 /* PreferenceKeys.m */; settings = {ASSET_TAGS = (); }; };
+		3125F8431BD6B89F00E63878 /* PreferenceKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 3125F8411BD6B89F00E63878 /* PreferenceKeys.m */; settings = {ASSET_TAGS = (); }; };
+		3125F8441BD6B89F00E63878 /* PreferenceKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 3125F8411BD6B89F00E63878 /* PreferenceKeys.m */; settings = {ASSET_TAGS = (); }; };
 		31B9B19D1BD5029200E36FCD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B9B19C1BD5029200E36FCD /* AppDelegate.m */; };
 		31B9B1A01BD5029200E36FCD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B9B19F1BD5029200E36FCD /* main.m */; };
 		31B9B1A31BD5029200E36FCD /* JournalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B9B1A21BD5029200E36FCD /* JournalViewController.m */; };
@@ -49,6 +54,10 @@
 		1B2A6282D637BC76CA55E9BD /* JournalTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JournalTableCellView.m; sourceTree = "<group>"; };
 		1B2A6A53F61B95C80FD263EA /* JournalTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JournalTableCellView.h; sourceTree = "<group>"; };
 		3125F83A1BD5957D00E63878 /* TestJournalEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestJournalEntry.m; sourceTree = "<group>"; };
+		3125F83C1BD6B7CA00E63878 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
+		3125F83D1BD6B7CA00E63878 /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
+		3125F8401BD6B89F00E63878 /* PreferenceKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceKeys.h; sourceTree = "<group>"; };
+		3125F8411BD6B89F00E63878 /* PreferenceKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceKeys.m; sourceTree = "<group>"; };
 		31B9B1981BD5029200E36FCD /* Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31B9B19B1BD5029200E36FCD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		31B9B19C1BD5029200E36FCD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -124,6 +133,10 @@
 			children = (
 				31B9B19B1BD5029200E36FCD /* AppDelegate.h */,
 				31B9B19C1BD5029200E36FCD /* AppDelegate.m */,
+				3125F83C1BD6B7CA00E63878 /* PreferencesViewController.h */,
+				3125F83D1BD6B7CA00E63878 /* PreferencesViewController.m */,
+				3125F8401BD6B89F00E63878 /* PreferenceKeys.h */,
+				3125F8411BD6B89F00E63878 /* PreferenceKeys.m */,
 				31B9B1A11BD5029200E36FCD /* JournalViewController.h */,
 				31B9B1A21BD5029200E36FCD /* JournalViewController.m */,
 				1B2A6A53F61B95C80FD263EA /* JournalTableCellView.h */,
@@ -306,7 +319,9 @@
 				31B9B1A01BD5029200E36FCD /* main.m in Sources */,
 				31B9B1D51BD50CDC00E36FCD /* Journal.xcdatamodeld in Sources */,
 				31B9B1CD1BD509A200E36FCD /* JournalEntry.m in Sources */,
+				3125F8421BD6B89F00E63878 /* PreferenceKeys.m in Sources */,
 				31B9B19D1BD5029200E36FCD /* AppDelegate.m in Sources */,
+				3125F83E1BD6B7CA00E63878 /* PreferencesViewController.m in Sources */,
 				31B9B1E51BD523CF00E36FCD /* ComposeViewController.m in Sources */,
 				1B2A69F7A4EFAD081695EEA6 /* JournalTableCellView.m in Sources */,
 			);
@@ -320,6 +335,7 @@
 				31B9B1CE1BD509A200E36FCD /* JournalEntry.m in Sources */,
 				31B9B1D21BD50B9F00E36FCD /* JournalKeeper.m in Sources */,
 				3125F83B1BD5957D00E63878 /* TestJournalEntry.m in Sources */,
+				3125F8431BD6B89F00E63878 /* PreferenceKeys.m in Sources */,
 				31B9B1D61BD50CDC00E36FCD /* Journal.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +347,8 @@
 				31B9B1BE1BD5029200E36FCD /* JournalUITests.m in Sources */,
 				31B9B1E61BD523CF00E36FCD /* ComposeViewController.m in Sources */,
 				1B2A606E704BD906DDAEA127 /* JournalTableCellView.m in Sources */,
+				3125F83F1BD6B7CA00E63878 /* PreferencesViewController.m in Sources */,
+				3125F8441BD6B89F00E63878 /* PreferenceKeys.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,7 +22,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <segue destination="Q6l-Ac-0Xr" kind="show" id="w7f-DC-fNv"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -651,7 +655,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Journal" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Journal" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="Journal" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="196" y="240" width="300" height="400"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -920,7 +924,7 @@
         <scene sceneID="oLw-TA-tuF">
             <objects>
                 <windowController storyboardIdentifier="JournalEntryCompose" id="Bpy-ie-eL7" sceneMemberID="viewController">
-                    <window key="window" title="Compose" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="VhP-ce-gJt">
+                    <window key="window" title="Compose" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="Compose" animationBehavior="default" id="VhP-ce-gJt">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="313" width="480" height="270"/>
@@ -1014,6 +1018,76 @@
                 <numberFormatter formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="qbc-Q5-MM3"/>
             </objects>
             <point key="canvasLocation" x="711" y="676"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="U7Z-G8-zhE">
+            <objects>
+                <windowController id="Q6l-Ac-0Xr" sceneMemberID="viewController">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="Preferences" animationBehavior="default" id="dTq-bg-JzW" customClass="NSPanel">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="186" height="60"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                    </window>
+                    <connections>
+                        <segue destination="tsh-fV-m4r" kind="relationship" relationship="window.shadowedContentViewController" id="dbB-qI-Qis"/>
+                    </connections>
+                </windowController>
+                <customObject id="Viy-Aa-Oy4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-320" y="109"/>
+        </scene>
+        <!--Preferences View Controller-->
+        <scene sceneID="fuH-wb-2eg">
+            <objects>
+                <viewController id="tsh-fV-m4r" customClass="PreferencesViewController" sceneMemberID="viewController">
+                    <view key="view" id="Ydc-P4-Iz2">
+                        <rect key="frame" x="0.0" y="0.0" width="186" height="60"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jzz-PK-1hE">
+                                <rect key="frame" x="116" y="16" width="53" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="gxV-Zk-iUp"/>
+                                </constraints>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="256" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="Fw0-18-4Eg">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>140</string>
+                                        <string>256</string>
+                                        <string>512</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                                <connections>
+                                    <action selector="takeCharacterLimit:" target="tsh-fV-m4r" id="Z80-OH-obT"/>
+                                </connections>
+                            </comboBox>
+                            <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dHI-Sn-rJH">
+                                <rect key="frame" x="18" y="21" width="92" height="16"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Character limit:" id="ZKm-Ei-vte">
+                                    <font key="font" metaFont="cellTitle"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="jzz-PK-1hE" secondAttribute="bottom" constant="20" symbolic="YES" id="1NM-e8-CAU"/>
+                            <constraint firstItem="dHI-Sn-rJH" firstAttribute="leading" secondItem="Ydc-P4-Iz2" secondAttribute="leading" constant="20" symbolic="YES" id="Bou-Mv-Asb"/>
+                            <constraint firstItem="jzz-PK-1hE" firstAttribute="baseline" secondItem="dHI-Sn-rJH" secondAttribute="baseline" id="Lfk-QG-5QR"/>
+                            <constraint firstItem="jzz-PK-1hE" firstAttribute="leading" secondItem="dHI-Sn-rJH" secondAttribute="trailing" constant="8" symbolic="YES" id="PbI-Zl-ddv"/>
+                            <constraint firstItem="jzz-PK-1hE" firstAttribute="top" secondItem="Ydc-P4-Iz2" secondAttribute="top" constant="20" symbolic="YES" id="QDY-KJ-1f2"/>
+                            <constraint firstAttribute="trailing" secondItem="jzz-PK-1hE" secondAttribute="trailing" constant="20" symbolic="YES" id="Y9S-Mf-3NB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="characterLimitPopUp" destination="jzz-PK-1hE" id="hIK-8q-yKk"/>
+                    </connections>
+                </viewController>
+                <customObject id="cdm-pe-lPh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-374" y="804"/>
         </scene>
     </scenes>
 </document>

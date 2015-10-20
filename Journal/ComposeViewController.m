@@ -11,6 +11,7 @@
 #import "JournalKeeper.h"
 #import "JournalEntry.h"
 #import "JournalEntry+CoreDataProperties.h"
+#import "PreferenceKeys.h"
 
 @interface ComposeViewController () <NSTextDelegate>
 
@@ -33,6 +34,18 @@
 	if (self.entry == nil) {
 		self.entry = [self.journal makeNewEntry];
 	}
+
+	NSUserDefaults *const __nonnull defaults = [NSUserDefaults standardUserDefaults];
+	__weak NSTextField *const characterCountField = self.characterCountField;
+	void (^const prefsChanged)(NSNotification *__nullable) = ^(NSNotification *__nullable note) {
+		NSInteger characterLimitFromPrefs = [defaults integerForKey:JournalPrefCharacterLimit];
+		characterCountField.integerValue = characterLimitFromPrefs;
+	};
+	[[NSNotificationCenter defaultCenter]
+			addObserverForName:NSUserDefaultsDidChangeNotification object:defaults
+			queue:[NSOperationQueue mainQueue]
+			usingBlock:prefsChanged];
+	prefsChanged(nil);
 
 	[self textDidChange:[NSNotification notificationWithName:NSTextDidChangeNotification object:nil]];
 }

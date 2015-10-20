@@ -10,9 +10,7 @@
 #import "JournalEntry.h"
 #import "JournalEntry+CoreDataProperties.h"
 
-static NSString *JournalPrefAuthor = @"JournalAuthor";
-static NSString *JournalPrefCharacterLimit = @"JournalCharacterLimit";
-enum: NSInteger { defaultCharacterLimit = 140 };
+#import "PreferenceKeys.h"
 
 NSString *JournalDidRecordNewEntryNotification = @"JournalDidRecordNewEntryNotification";
 
@@ -29,15 +27,23 @@ NSString *JournalNotificationUserInfoKeyEntry = @"JournalEntry";
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 		[defaults registerDefaults:@{
 			JournalPrefAuthor : NSFullUserName(),
-			JournalPrefCharacterLimit: @(defaultCharacterLimit),
+			JournalPrefCharacterLimit: @(JournalPrefCharacterLimitDefaultValue),
 		}];
 		_author = [defaults stringForKey:JournalPrefAuthor];
-		NSInteger characterLimitFromPrefs = [defaults integerForKey:JournalPrefCharacterLimit];
-		if (characterLimitFromPrefs <= 0) {
-			characterLimitFromPrefs = defaultCharacterLimit;
-		}
-		_characterLimit = (NSUInteger)characterLimitFromPrefs;
-				
+		__weak typeof(self) weakSelf = self;
+		void (^const prefsChanged)(NSNotification *__nullable) = ^(NSNotification *__nullable note) {
+			NSInteger characterLimitFromPrefs = [defaults integerForKey:JournalPrefCharacterLimit];
+			if (characterLimitFromPrefs <= 0) {
+				characterLimitFromPrefs = JournalPrefCharacterLimitDefaultValue;
+			}
+			weakSelf.characterLimit = (NSUInteger)characterLimitFromPrefs;
+		};
+		[[NSNotificationCenter defaultCenter]
+				addObserverForName:NSUserDefaultsDidChangeNotification object:defaults
+				queue:[NSOperationQueue mainQueue]
+				usingBlock:prefsChanged];
+		prefsChanged(nil);
+
 		_managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
 		NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:[[NSBundle bundleForClass:self.class]
 				URLForResource:@"Journal" withExtension:@"momd"]];
