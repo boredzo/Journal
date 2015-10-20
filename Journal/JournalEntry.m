@@ -23,7 +23,7 @@
 }
 
 - (NSInteger) charactersRemainingUnderLimit:(NSUInteger)limit {
-	NSInteger length = self.text.length;
+	NSUInteger length = self.text.length;
 	if (length > NSIntegerMax) {
 		length = NSIntegerMax;
 	}
