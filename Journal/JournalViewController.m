@@ -96,7 +96,9 @@ JournalViewController *journalVC_global = nil;
 	JournalTableCellView *const cellView = (JournalTableCellView *const)self.tableCellView;
 	cellView.bylineField.stringValue = entry.byline;
 	cellView.dateField.objectValue = entry.date;
-	cellView.entryTextField.stringValue = entry.text;
+	NSTextField *entryTextField = cellView.entryTextField;
+	entryTextField.stringValue = entry.text;
+	[entryTextField sizeToFit];
 	return cellView.fittingSize.height;
 }
 

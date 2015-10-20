@@ -713,7 +713,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="33" viewBased="YES" id="lyl-vO-1ZY">
-                                            <rect key="frame" x="0.0" y="0.0" width="298" height="349"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="298" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -736,9 +736,9 @@
                                                             <rect key="frame" x="1" y="1" width="295" height="33"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="bO3-S5-dwl">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="3" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bO3-S5-dwl">
                                                                     <rect key="frame" x="0.0" y="0.0" width="295" height="17"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" title="Entry text" id="RsS-aE-E1N">
+                                                                    <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" title="Entry text" id="RsS-aE-E1N">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -851,9 +851,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="295" height="33"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="10p-mv-1tn">
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="3" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="10p-mv-1tn">
                             <rect key="frame" x="0.0" y="0.0" width="295" height="17"/>
-                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Entry text" id="QoJ-n0-Tqb">
+                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Entry text" id="QoJ-n0-Tqb">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
