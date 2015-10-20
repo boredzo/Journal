@@ -13,6 +13,10 @@ So I wrote that.
 
 This is also my first Core Data application and my first storyboard-based application, so I wrote it partly to learn to use these things.
 
+## Requirements
+
+OS X 10.10 or later.
+
 ## The user interface
 
 There are two main windows.
