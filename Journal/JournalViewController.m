@@ -9,12 +9,15 @@
 #import "JournalViewController.h"
 #import "JournalKeeper.h"
 #import "ComposeViewController.h"
+#import "JournalTableCellView.h"
+#import "JournalEntry+CoreDataProperties.h"
 
 JournalViewController *journalVC_global = nil;
 
-@interface JournalViewController ()
+@interface JournalViewController () <NSTableViewDelegate>
 
 @property (strong) IBOutlet NSArrayController *arrayController;
+@property (strong) IBOutlet NSTableCellView *tableCellView;
 
 @end
 
@@ -82,6 +85,15 @@ JournalViewController *journalVC_global = nil;
 
 - (void) didPresentErrorWithRecovery:(BOOL)didPresentErrorWithRecovery contextInfo:(id)contextInfo {
 	[NSApp terminate:nil];
+}
+
+- (CGFloat) tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+	JournalEntry *__nonnull entry = self.arrayController.arrangedObjects[(NSUInteger)row];
+	JournalTableCellView *const cellView = (JournalTableCellView *const)self.tableCellView;
+	cellView.bylineField.stringValue = entry.byline;
+	cellView.dateField.objectValue = entry.date;
+	cellView.entryTextField.stringValue = entry.text;
+	return cellView.fittingSize.height;
 }
 
 - (void)setRepresentedObject:(id)representedObject {

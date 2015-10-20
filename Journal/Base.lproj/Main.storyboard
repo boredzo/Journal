@@ -705,11 +705,11 @@
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="35" horizontalPageScroll="10" verticalLineScroll="35" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8m-YQ-uom">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="351"/>
                                 <clipView key="contentView" id="2re-Fz-kER">
-                                    <rect key="frame" x="1" y="17" width="298" height="333"/>
+                                    <rect key="frame" x="1" y="1" width="298" height="349"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="33" headerView="Z18-Cw-kL1" viewBased="YES" id="lyl-vO-1ZY">
-                                            <rect key="frame" x="0.0" y="0.0" width="298" height="333"/>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="33" viewBased="YES" id="lyl-vO-1ZY">
+                                            <rect key="frame" x="0.0" y="0.0" width="298" height="349"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -728,11 +728,11 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="LWI-tV-N4s">
+                                                        <tableCellView id="LWI-tV-N4s" customClass="JournalTableCellView">
                                                             <rect key="frame" x="1" y="1" width="295" height="33"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="bO3-S5-dwl">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="bO3-S5-dwl">
                                                                     <rect key="frame" x="0.0" y="0.0" width="295" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Entry text" id="RsS-aE-E1N">
                                                                         <font key="font" metaFont="system"/>
@@ -747,7 +747,7 @@
                                                                         </binding>
                                                                     </connections>
                                                                 </textField>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Xnr-f6-mgX">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="Xnr-f6-mgX">
                                                                     <rect key="frame" x="0.0" y="17" width="295" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="Date" id="DJM-cO-1b2">
                                                                         <font key="font" size="12" name=".HelveticaNeueDeskInterface-Thin"/>
@@ -763,7 +763,7 @@
                                                                         <outlet property="formatter" destination="YfG-Gf-kfb" id="UsP-gM-dRh"/>
                                                                     </connections>
                                                                 </textField>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="zi4-ur-GZP">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="zi4-ur-GZP">
                                                                     <rect key="frame" x="0.0" y="17" width="295" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Byline" id="LPU-bJ-01g">
                                                                         <font key="font" size="12" name=".HelveticaNeueDeskInterface-Bold"/>
@@ -792,6 +792,9 @@
                                                                 <constraint firstAttribute="trailing" secondItem="bO3-S5-dwl" secondAttribute="trailing" constant="2" id="sK3-a6-zHd"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Xnr-f6-mgX" secondAttribute="trailing" constant="2" id="uhs-hy-Ebd"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outlet property="textField" destination="bO3-S5-dwl" id="XIL-l2-98K"/>
+                                                            </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                     <connections>
@@ -805,6 +808,9 @@
                                                     </connections>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="delegate" destination="XfG-lQ-9wD" id="bya-3M-o8A"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -817,10 +823,6 @@
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <tableHeaderView key="headerView" id="Z18-Cw-kL1">
-                                    <rect key="frame" x="0.0" y="0.0" width="298" height="17"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableHeaderView>
                             </scrollView>
                         </subviews>
                         <constraints>
@@ -837,8 +839,77 @@
                     </view>
                     <connections>
                         <outlet property="arrayController" destination="Qjk-pv-nHj" id="384-zh-SOO"/>
+                        <outlet property="tableCellView" destination="nQA-uC-zoY" id="ziC-dn-JNb"/>
                     </connections>
                 </viewController>
+                <tableCellView id="nQA-uC-zoY" customClass="JournalTableCellView">
+                    <rect key="frame" x="0.0" y="0.0" width="295" height="33"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="10p-mv-1tn">
+                            <rect key="frame" x="0.0" y="0.0" width="295" height="17"/>
+                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Entry text" id="QoJ-n0-Tqb">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="nQA-uC-zoY" name="value" keyPath="objectValue.text" id="iPd-ZY-SMt">
+                                    <dictionary key="options">
+                                        <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </textField>
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="Acz-rC-1Xz">
+                            <rect key="frame" x="0.0" y="17" width="295" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="Date" id="jMl-eV-brR">
+                                <font key="font" size="12" name=".HelveticaNeueDeskInterface-Thin"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="nQA-uC-zoY" name="value" keyPath="objectValue.date" id="zqN-R1-7I6">
+                                    <dictionary key="options">
+                                        <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                    </dictionary>
+                                </binding>
+                                <outlet property="formatter" destination="YfG-Gf-kfb" id="VTf-JQ-ajM"/>
+                            </connections>
+                        </textField>
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="Tdq-uZ-anc">
+                            <rect key="frame" x="0.0" y="17" width="295" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Byline" id="gZB-mz-nHg">
+                                <font key="font" size="12" name=".HelveticaNeueDeskInterface-Bold"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="nQA-uC-zoY" name="value" keyPath="objectValue.byline" id="J1o-7d-HQp">
+                                    <dictionary key="options">
+                                        <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="10p-mv-1tn" secondAttribute="trailing" constant="2" id="2hG-Uw-NFE"/>
+                        <constraint firstItem="Acz-rC-1Xz" firstAttribute="leading" secondItem="nQA-uC-zoY" secondAttribute="leading" constant="2" id="37q-7F-vUf"/>
+                        <constraint firstAttribute="trailing" secondItem="Tdq-uZ-anc" secondAttribute="trailing" constant="2" id="HWu-NC-1HX"/>
+                        <constraint firstItem="Tdq-uZ-anc" firstAttribute="leading" secondItem="nQA-uC-zoY" secondAttribute="leading" constant="2" id="Hf9-Cq-sNa"/>
+                        <constraint firstItem="Acz-rC-1Xz" firstAttribute="baseline" secondItem="Tdq-uZ-anc" secondAttribute="baseline" id="Shw-J4-kMP"/>
+                        <constraint firstItem="Tdq-uZ-anc" firstAttribute="top" secondItem="nQA-uC-zoY" secondAttribute="top" id="bZp-3J-Kg7"/>
+                        <constraint firstAttribute="trailing" secondItem="Acz-rC-1Xz" secondAttribute="trailing" constant="2" id="f3u-qz-ods"/>
+                        <constraint firstItem="10p-mv-1tn" firstAttribute="top" secondItem="Tdq-uZ-anc" secondAttribute="bottom" id="niY-z5-R0C"/>
+                        <constraint firstItem="Acz-rC-1Xz" firstAttribute="top" secondItem="nQA-uC-zoY" secondAttribute="top" id="qjw-Ct-SoS"/>
+                        <constraint firstItem="10p-mv-1tn" firstAttribute="leading" secondItem="nQA-uC-zoY" secondAttribute="leading" constant="2" id="t6b-be-xIu"/>
+                        <constraint firstAttribute="bottom" secondItem="10p-mv-1tn" secondAttribute="bottom" id="uLu-FN-N7s"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="textField" destination="10p-mv-1tn" id="FRb-xs-Yfz"/>
+                    </connections>
+                </tableCellView>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <dateFormatter dateStyle="short" timeStyle="short" doesRelativeDateFormatting="YES" id="YfG-Gf-kfb"/>
                 <arrayController mode="entity" entityName="JournalEntry" fetchPredicateFormat="date != nil" editable="NO" automaticallyPreparesContent="YES" selectsInsertedObjects="NO" avoidsEmptySelection="NO" id="Qjk-pv-nHj"/>
