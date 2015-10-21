@@ -25,7 +25,7 @@ JournalViewController *journalVC_global = nil;
 @implementation JournalViewController
 {
 	NSMutableArray <NSWindowController *> *_composeWindowControllers;
-	bool _computeRowHeights;
+	NSMutableIndexSet *_rowsToMeasure;
 }
 
 - (IBAction)summonNewEntryUI:(id)sender {
@@ -49,7 +49,7 @@ JournalViewController *journalVC_global = nil;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	_computeRowHeights = false;
+	_rowsToMeasure = [[NSMutableIndexSet alloc] init];
 
 	//HAX: Nib compiler or unarchiver doesn't seem to preserve this correctly; it gets reset to NSImageOverlaps at run time.
 	self.buttonForCreationOfPosts.imagePosition = NSImageOnly;
@@ -95,18 +95,29 @@ JournalViewController *journalVC_global = nil;
 }
 
 - (CGFloat) tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
-	if ( ! _computeRowHeights ) {
-		static CGFloat defaultHeight = 40.0;
-		static dispatch_once_t onceToken;
-		dispatch_once(&onceToken, ^{
-			JournalTableCellView *const cellView = (JournalTableCellView *const)self.tableCellView;
-			const CGFloat height = cellView.frame.size.height;
-			if (height > 0.0) {
-				defaultHeight = height;
-			}
-		});
+	static CGFloat defaultHeight = 40.0;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		JournalTableCellView *const cellView = (JournalTableCellView *const)self.tableCellView;
+		const CGFloat height = cellView.frame.size.height;
+		if (height > 0.0) {
+			defaultHeight = height;
+		}
+	});
+
+	enum { maximumMeasurableRowCount = 50 };
+	if (_rowsToMeasure.count > maximumMeasurableRowCount) {
+		NSRange range = { 0, (NSUInteger)maximumMeasurableRowCount };
+		if (row >= maximumMeasurableRowCount / 2) {
+			range.location = (NSUInteger)(row - maximumMeasurableRowCount / 2);
+		}
+		_rowsToMeasure = [NSMutableIndexSet indexSetWithIndexesInRange:range];
+	}
+
+	if ( ! [_rowsToMeasure containsIndex:(NSUInteger)row] ) {
 		return defaultHeight;
 	}
+
 	JournalEntry *__nonnull entry = self.arrayController.arrangedObjects[(NSUInteger)row];
 	CGFloat cachedHeight = entry.cachedRowHeight;
 	if (cachedHeight < 1.0) {
@@ -123,10 +134,8 @@ JournalViewController *journalVC_global = nil;
 }
 
 - (void) tableView:(NSTableView *)tableView didAddRowView:(NSTableRowView *)rowView forRow:(NSInteger)row {
-	_computeRowHeights = true;
-	if (row >= 0) {
-		[tableView noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndex:(NSUInteger)row]];
-	}
+	[_rowsToMeasure addIndex:(NSUInteger)row];
+	[tableView noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndex:(NSUInteger)row]];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
