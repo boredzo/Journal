@@ -25,6 +25,7 @@ JournalViewController *journalVC_global = nil;
 @implementation JournalViewController
 {
 	NSMutableArray <NSWindowController *> *_composeWindowControllers;
+	bool _computeRowHeights;
 }
 
 - (IBAction)summonNewEntryUI:(id)sender {
@@ -47,6 +48,8 @@ JournalViewController *journalVC_global = nil;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+
+	_computeRowHeights = false;
 
 	//HAX: Nib compiler or unarchiver doesn't seem to preserve this correctly; it gets reset to NSImageOverlaps at run time.
 	self.buttonForCreationOfPosts.imagePosition = NSImageOnly;
@@ -92,6 +95,18 @@ JournalViewController *journalVC_global = nil;
 }
 
 - (CGFloat) tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+	if ( ! _computeRowHeights ) {
+		static CGFloat defaultHeight = 40.0;
+		static dispatch_once_t onceToken;
+		dispatch_once(&onceToken, ^{
+			JournalTableCellView *const cellView = (JournalTableCellView *const)self.tableCellView;
+			const CGFloat height = cellView.frame.size.height;
+			if (height > 0.0) {
+				defaultHeight = height;
+			}
+		});
+		return defaultHeight;
+	}
 	JournalEntry *__nonnull entry = self.arrayController.arrangedObjects[(NSUInteger)row];
 	CGFloat cachedHeight = entry.cachedRowHeight;
 	if (cachedHeight < 1.0) {
@@ -105,6 +120,13 @@ JournalViewController *journalVC_global = nil;
 		entry.cachedRowHeight = cachedHeight;
 	}
 	return cachedHeight;
+}
+
+- (void) tableView:(NSTableView *)tableView didAddRowView:(NSTableRowView *)rowView forRow:(NSInteger)row {
+	_computeRowHeights = true;
+	if (row >= 0) {
+		[tableView noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndex:(NSUInteger)row]];
+	}
 }
 
 - (void)setRepresentedObject:(id)representedObject {
