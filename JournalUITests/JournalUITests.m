@@ -32,9 +32,27 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // Use recording to get started writing UI tests.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testNewEntryWorkflow {
+	
+	NSString *journalEntryString = @"Bacon ipsum dolar ham.";
+	XCUIApplication *app = [[XCUIApplication alloc] init];
+	
+	XCUIElement *journalWindow = app.windows[@"Journal"];
+	
+	XCTAssertTrue(journalWindow.buttons[@"new_entry"].exists);
+	
+	[journalWindow.buttons[@"new_entry"] click];
+	
+	XCUIElement *composeWindow = app.windows[@"Compose"];
+	XCTAssertTrue(composeWindow.exists);
+	XCTAssertTrue(composeWindow.textViews[@"compose_entry"].exists);
+	XCTAssertTrue(composeWindow.buttons[@"Save"].exists);
+	
+	[composeWindow.textViews[@"compose_entry"] typeText:journalEntryString];
+	[composeWindow.buttons[@"Save"] click];
+	
+	XCTAssertTrue([[journalWindow.tables childrenMatchingType:XCUIElementTypeTableRow] elementBoundByIndex:0].staticTexts[journalEntryString].exists);
+	
 }
 
 @end
